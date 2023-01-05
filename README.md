@@ -16,6 +16,6 @@ No lado do servidor ele usa o módulo HTTP NodeJS nativo, enquanto no cliente (n
 - Transformações automáticas para dados JSON.
 - Suporte do lado do cliente para proteção contra XSRF (A falsificação de solicitação entre sites (também conhecida como XSRF ou CSRF) é um ataque contra aplicativos hospedados na Web em que um aplicativo Web mal-intencionado pode influenciar a interação entre um navegador cliente e um aplicativo Web que confia nesse navegador. Esses ataques são possíveis porque os navegadores da Web enviam alguns tipos de tokens de autenticação automaticamente com cada solicitação para um site. Essa forma de exploração também é conhecida como um ataque de um clique ou uma corrida de sessão porque o ataque aproveita a sessão autenticada anteriormente do usuário).
 
-O Projeto será desenvolvido usando Tailwindcss e Prisma, o projeto realizara requisições do tipo GET, POST, PUT, PATCH e DELETE. 
+O Projeto será desenvolvido usando Tailwindcss e PrismJs, o projeto realizara requisições do tipo GET, POST, PUT, PATCH e DELETE. 
 Faz múltiplas requisições ao mesmo tempo.
 Criar interceptadores etc...
