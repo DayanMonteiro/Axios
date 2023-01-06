@@ -3,6 +3,47 @@ const dataEl = document.getElementById("data");
 const headersEl = document.getElementById("headers");
 const configEl = document.getElementById("config");
 
+// Ex: de interceptação para inserir dado
+axios.interceptors.request.use(function (config) {
+  config.data = {
+    name: "Dayan",
+  };
+  console.log("Inserindo campo de nome", config);
+  return config;
+});
+
+// Ex: se quisesse interceptar um dado e inserir o token do usuário antes de enviar
+axios.interceptors.request.use(function (config) {
+  config.headers.qualquerCoisa = "Inserindo Token";
+
+  console.log("Inserindo: ", config);
+  return config;
+});
+
+// ex: de inserção de token mais próximo do mundo real usando o Authorization
+axios.interceptors.request.use(
+  function (config) {
+    config.headers.Authorization =
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+    return config;
+  },
+  function (error) {
+    console.log("error");
+    return Promise.reject(error);
+  }
+);
+
+axios.interceptors.response.use(
+  function (response) {
+    console.log("sucesso");
+    return response;
+  },
+  function (error) {
+    console.log(error.response);
+    return Promise.reject(error);
+  }
+);
+
 const get = () => {
   const config = {
     params: {
