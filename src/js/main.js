@@ -109,6 +109,17 @@ const transform = () => {
 };
 
 const errorHandling = () => {
+  axios
+    .get(
+      "https://jsonplaceholder.typicode.com/posts_colocando_coisa_que_nao_tem_no_link/"
+    )
+    .then((response) => renderOutput(response))
+    .catch((error) => {
+      renderOutput(error.response);
+      // console.log(error.response.data);
+      // console.log(error.response.status);
+      // console.log(error.response.headers);
+    });
   console.log("errorHandling");
 };
 
