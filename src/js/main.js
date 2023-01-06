@@ -71,6 +71,7 @@ const multiple = () => {
       _limit: 2,
     },
   };
+
   Promise.all([
     axios.get("https://jsonplaceholder.typicode.com/posts/", config),
     axios.get("https://jsonplaceholder.typicode.com/users/", config),
@@ -86,6 +87,7 @@ const transform = () => {
     params: {
       _limit: 5,
     },
+
     transformResponse: [
       function (data) {
         const payload = JSON.parse(data).map((o) => {
@@ -102,6 +104,7 @@ const transform = () => {
       },
     ],
   };
+
   axios
     .get("https://jsonplaceholder.typicode.com/posts/", config)
     .then((response) => renderOutput(response));
@@ -124,6 +127,23 @@ const errorHandling = () => {
 };
 
 const cancel = () => {
+  const controller = new AbortController();
+
+  const config = {
+    params: {
+      _limit: 5,
+    },
+    signal: controller.signal,
+  };
+
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts/", config)
+    .then((response) => renderOutput(response))
+    .catch((error) => {
+      console.log(error.message);
+    });
+  controller.abort();
+
   console.log("cancel");
 };
 
