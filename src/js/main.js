@@ -29,11 +29,30 @@ const post = () => {
   console.log("post");
 };
 
+// put é mais usada para substituir todos os campos
 const put = () => {
+  const data = {
+    title: "My Title Usando Put",
+    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a mattis libero. Aliquam nulla est, vulputate ac efficitur vitae, consectetur eu justo. Donec dictum pulvinar facilisis. Cras ac nibh ac mauris hendrerit posuere at non augue. Nullam a porttitor nisl, vel ultrices lorem.",
+    userId: 1,
+  };
+
+  axios
+    .put("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => renderOutput(response));
+
   console.log("put");
 };
 
+// mais usado para uma correção pequena mudando algum dos dados
 const patch = () => {
+  const data = {
+    title: "My Title Usando Patch",
+  };
+
+  axios
+    .patch("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => renderOutput(response));
   console.log("patch");
 };
 
