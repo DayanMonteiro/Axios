@@ -3,6 +3,33 @@ const dataEl = document.getElementById("data");
 const headersEl = document.getElementById("headers");
 const configEl = document.getElementById("config");
 
+/* 
+se precisar consimir multiplas APIs posso fazer uma baseUrl e outras novas urls ex:
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
+// outra api
+const newAxios = axios.create({
+    baseURL: 'https://api.example.com',
+});
+
+// aí para aplicar ficaria
+const get = () => {
+  const config = {
+    params: {
+      _limit: 5,
+    },
+  };
+
+  // entraria o newAxios no lugar do axios
+  newAxios
+    .get("https://jsonplaceholder.typicode.com/posts/", config)
+    .then((response) => renderOutput(response));
+};
+
+e inserir quantas forem necessárias para a aplicação
+*/
+
 // Ex: de interceptação para inserir dado
 axios.interceptors.request.use(function (config) {
   config.data = {
