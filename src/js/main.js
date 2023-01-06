@@ -53,14 +53,31 @@ const patch = () => {
   axios
     .patch("https://jsonplaceholder.typicode.com/posts/1", data)
     .then((response) => renderOutput(response));
+
   console.log("patch");
 };
 
 const del = () => {
+  axios
+    .delete("https://jsonplaceholder.typicode.com/posts/2", data)
+    .then((response) => renderOutput(response));
+
   console.log("delete");
 };
 
 const multiple = () => {
+  const config = {
+    params: {
+      _limit: 2,
+    },
+  };
+  Promise.all([
+    axios.get("https://jsonplaceholder.typicode.com/posts/", config),
+    axios.get("https://jsonplaceholder.typicode.com/users/", config),
+  ]).then((response) => {
+    console.log("posts", response[0].data);
+    console.log("users", response[1].data);
+  });
   console.log("multiple");
 };
 
