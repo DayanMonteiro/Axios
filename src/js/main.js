@@ -82,6 +82,29 @@ const multiple = () => {
 };
 
 const transform = () => {
+  const config = {
+    params: {
+      _limit: 5,
+    },
+    transformResponse: [
+      function (data) {
+        const payload = JSON.parse(data).map((o) => {
+          return {
+            userId: o.userId,
+            title: o.title,
+
+            // incluir
+            is_selected: true,
+            status: "ativo",
+          };
+        });
+        return payload;
+      },
+    ],
+  };
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts/", config)
+    .then((response) => renderOutput(response));
   console.log("transform");
 };
 
